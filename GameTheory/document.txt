@@ -1,0 +1,4 @@
+Game of Nim:
+
+1. https://discuss.codechef.com/questions/79515/grundy-number
+2. http://www.geeksforgeeks.org/combinatorial-game-theory-set-4-sprague-grundy-theorem/
