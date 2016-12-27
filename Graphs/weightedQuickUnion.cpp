@@ -4,7 +4,7 @@ using namespace std;
 class WeightedQuickUnion
 {
 	int *id;
-	int *sz;
+	int *sz;	// maintain size of each root. So that smaller tree is connected to the root of bigger tree.
 	
 	public:
 	WeightedQuickUnion(int N)
@@ -22,7 +22,7 @@ class WeightedQuickUnion
 	{
 		while(i!=id[i])
 		{
-			id[i] = id[id[i]];
+			id[i] = id[id[i]];	//Path compression. Jumping directly to grand parent.
 			i = id[i];
 		}
 		return i;
