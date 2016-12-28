@@ -1,4 +1,15 @@
+Take away Games(single pile games)
+
+P-positions and N-positions are defined recursively by the following three statements.
+(1) All terminal positions are P-positions.
+(2) From every N-position, there is at least one move to a P-position.
+(3) From every P-position, every move is to an N-position.
+
+N-position is winning position fo the person who has to move.
+
 Game of Nim:
 
 1. https://discuss.codechef.com/questions/79515/grundy-number
 2. http://www.geeksforgeeks.org/combinatorial-game-theory-set-4-sprague-grundy-theorem/
+3. http://www.cs.cmu.edu/afs/cs/academic/class/15859-f01/www/notes/comb.pdf
+
