@@ -1,1 +1,121 @@
+Static function overloading:
+
+	Return type can be anything. It depends solely on argument type and count. If arguments have same count and same type and only return type is different, then it will throw error.
+
+	Works:
+	int func(int, double);
+	double func(int);
+
+	Doesn't work:
+	int func(int);
+	double func(int);
+
+Namespace:
+	following function tells everything:
+	#include <iostream>
+	using namespace std;
+
+	namespace first
+	{
+	  int x = 5;
+	  int y = 10;
+	}
+
+	namespace second
+	{
+	  double x = 3.1416;
+	  double y = 2.7183;
+	}
+
+	int main () {
+	  using first::x;
+	  using second::y;
+	  cout << x << '\n';
+	  cout << y << '\n';
+	  cout << first::y << '\n';
+	  cout << second::x << '\n';
+	  return 0;
+	}
+
+Constructors:
+	Once a constructor is defined, default constructor will not be called. It thorws an error if did so.
+	But incase of default copy constructor, it's not the same. Even if you define a constructor whose prototype is not similar to default copy constructor, then also the default copy constructor will be called implicitly.
+
+	oveloaded Assignement operator constructor is used when we need to assign one object to another object. But copy constructor is used to create new object using existing object.
+
+	MyClass foo;
+	MyClass bar (foo);       // object initialization: copy constructor called
+	MyClass baz = foo;       // object initialization: copy constructor called
+	foo = bar;               // object already initialized: copy assignment called
+
+Operator overloading:
+
+Example speaks itself:
+
+    Declaration inside class: int operator + (const A&);
+    Definition outside class: int A::operator+ (const A& param)
+    Call:
+    A foo (3,1);
+    A bar (1,2);
+    int a = foo + bar;
+
+
+Friend Fucntion:
+
+	Can access private and protected members of a given class.
+	declaration: friend int hello (const A&);
+	call: int z = hello(a);
+
+
+Templates:
+	Funtion templates:
+		Declaration:
+			template<class T>
+			T something(T a, T b);
+		Call:
+			something(a,b);
+			OR
+			something<float,float>(a,b);
+	Class Templates:
+		Declaration:
+			template<class T>
+			class Something{};
+		Call:
+			Something<int> a;
+
+	
+Type Casting:
+	Implicit cast:
+		int b = a;
+	C style:
+		int b = (int)a;
+	C++ style:
+		int b = int(a);
+
+	Static_cast:
+		standard conversion. like from int to float
+		From derived class to Base class
+		Derived d;
+		Base b = static_cast<Base> (d);
+
+	Reinterpret_cast: used for Unsafe cast
+		between pointer to pointer.
+		between integer to pointer.
+			int a =5;
+			char * b = reinterpret_cast<char *>(a);
+		between function pointer to function pointer.
+
+	const_cast: using it on  originally const variables is undefined behavior. because these variables can be placed in read only memory. It's ok only when a non-const is converted to const and to get back original non-const, you can use this.
+		takes away constant restriction.
+		int * a = new int(5);
+		const int *  b = a;
+		a = const_cast<int *> (b);
+
+
+	Dynamic_cast: Can only be used on pointers and references. 
+		it can be used to cast derived class to base class. But it cannot be used to cast base class to derived class.
+		It can be used to cast base class to derived class only if base pointer is polymorphic class and it is holding the object of derived class.
+		Null pointer is retrned if the cast failed.
+
+		
 
